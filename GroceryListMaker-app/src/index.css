@@ -1,0 +1,8 @@
+.grocery{
+  margin-top: 10px;
+  cursor: pointer;
+}
+.grocery:hover{
+  font-size: 20px;
+
+}

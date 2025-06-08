@@ -11,7 +11,7 @@ function Onchange(){
         setName(event.target.value);
     }
     function handleQuantityChange(event){
-        setQuantity(event.target.value);
+        setQuantity(event.target.value); 
     }
     function handleCommentChange(event){
         setComment(event.target.value);

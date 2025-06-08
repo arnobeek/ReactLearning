@@ -5,6 +5,8 @@
 //React hooks
 //useState
 //onChange
+//updater function
+//updating state of objects
 
 import Header from './Header.jsx'
 import Food from './Food.jsx'
@@ -17,6 +19,7 @@ import List from './List.jsx';
 import Profilepic from './profilepic.jsx';
 import MyComponent from './MyComponent.jsx';
 import Onchange from './Onchange.jsx';
+import CarObject from './CarObject.jsx';
 
 function App() {
   const fruits = [{id: 1,name: "apple", calories: "apple"}, {id: 2,name: "banana", calories: 105}, {id: 3,name:"orange", calories: 45}, {id: 4,name: "coconut", calories: 159}, {id: 5,name: "pineapple", calories: 37}];
@@ -40,6 +43,7 @@ function App() {
     <Food />
     <MyComponent />
     <Onchange />
+    <CarObject />
     <Footer />
     </>
   );

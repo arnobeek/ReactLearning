@@ -5,13 +5,17 @@ function Counter(){
     const [count, setCount] = useState(0);
 
     const decreaseCount = () => {
-        setCount(count-1);
+        setCount(c => c-1);
+        setCount(c => c-1);
+        setCount(c => c-1);
     }
     const resetCount = () => {
         setCount(0);
     }
     const increaseCount = () => {
-        setCount(count+1);
+        setCount(c => c+1);
+        setCount(c => c+1);
+        setCount(c => c+1);
     }
 
     return(

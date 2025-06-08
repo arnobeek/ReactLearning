@@ -10,15 +10,17 @@ function ColorPicker(){
     
     return(        
         <>
-        <div>
-            <h2>Color Picker</h2>
+        <div className="body">
+            <h2 style={{fontWeight:'bold', fontSize:'70px'}}>Color Picker</h2>
             <div className="color-container" style={{backgroundColor:color}}>
 
             </div>
-            <label>
-                <p>Select a color: </p>
+            <label style={{fontWeight: "bold"}
+            }>
+                Select a color:
                 <input type="color" value={color} onChange={handleColorChange}/>
             </label>
+            
             <p>Selected color: {color}</p>
         </div>
         </>
