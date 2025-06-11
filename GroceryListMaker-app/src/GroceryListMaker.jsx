@@ -2,33 +2,31 @@ import { useState } from "react";
 
 function GroceryListMaker(){
 
-    const [groceries, setGroceries] = useState(["Apples", "Bread", "Bananas"]);
+    const [groceries, setGroceries] = useState(["Apples", "Bread", "Bananas"])
 
     function handleAddGrocery(){
-
         const newGrocery = document.getElementById("grocery-input").value;
         document.getElementById("grocery-input").value = "";
 
-        setGroceries([...groceries, newGrocery])
+        setGroceries(g=>([...g, newGrocery]));
 
     }
     function handleRemoveGrocery(index){
-        setGroceries(groceries.filter((_,i) => i !== index))
-
+        setGroceries(groceries.filter((_,i) => i!==index))        
     }
 
     return(
-        <div style={{backgroundColor:'#56DFCF', height:'700px', display:'flex', flexDirection:'column', alignItems:'center', padding:0, margin:0}}>
-            <h2 style={{fontSize:50}}>Grocery List Maker</h2>
+        <div className="main-container">
+            <h2 className="title">Grocery List Maker App</h2>
             <div>
-                <input type="
-            text" id="grocery-input" placeholder="Enter your grocery" size={40} style={{height:'50px',}}/>
-            <button onClick={handleAddGrocery} style={{height:'50px', margin:'5px'}}>Add Grocery</button>
+                <input type="text" id="grocery-input" placeholder="Enter your grocery here" className="grocery-input"/>
+                <button onClick={handleAddGrocery} style={{height:50, margin:5}}>Add Grocery</button>
             </div>
-            <h3 style={{fontSize:30}}>Grocery List</h3>
+            <h3 className="list-title">Grocery List</h3>
             <ul>
-                {groceries.map((grocery, index) => <li key={index} onClick={()=>handleRemoveGrocery(index)} className="grocery">{grocery}</li>)}
+                {groceries.map((grocery, index)=><li key={index} className="grocery" onClick={()=>handleRemoveGrocery(index)}>{grocery}</li>)}
             </ul>
+            
         </div>
     )
 

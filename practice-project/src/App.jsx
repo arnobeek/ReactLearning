@@ -7,6 +7,7 @@
 //onChange
 //updater function
 //updating state of objects
+// useEffect
 
 import Header from './Header.jsx'
 import Food from './Food.jsx'
@@ -20,6 +21,9 @@ import Profilepic from './profilepic.jsx';
 import MyComponent from './MyComponent.jsx';
 import Onchange from './Onchange.jsx';
 import CarObject from './CarObject.jsx';
+import Car from './Car.jsx';
+import Effect from './Effect.jsx';
+import SizeAdjuster from './SizeAdjuster.jsx';
 
 function App() {
   const fruits = [{id: 1,name: "apple", calories: "apple"}, {id: 2,name: "banana", calories: 105}, {id: 3,name:"orange", calories: 45}, {id: 4,name: "coconut", calories: 159}, {id: 5,name: "pineapple", calories: 37}];
@@ -44,6 +48,9 @@ function App() {
     <MyComponent />
     <Onchange />
     <CarObject />
+    <Car />
+    <Effect />
+    <SizeAdjuster />
     <Footer />
     </>
   );

@@ -1,12 +1,10 @@
-import ColorPicker from "./ColorPicker"
+import ColorPicker from "./ColorPicker";
 
-function App() {
-  
+function App(){
 
-  return (
+  return(
     <ColorPicker />
-    
   )
-}
 
-export default App
+}
+export default App;
