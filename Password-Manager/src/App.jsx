@@ -1,34 +1,60 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from "react"
+import Axios from "axios";
 
 function App() {
-  const [count, setCount] = useState(0)
+  
+  const [password, setPassword] = useState("");
+  const [title, setTitle] = useState("");
+  const [passwordList, setPasswordList] = useState([]);
 
+  useEffect(() => {
+    Axios.get("http://localhost:3001/showpasswords").then((response)=>{setPasswordList(response.data)});
+  },[])
+
+  function handlePasswordChange(event){
+    setPassword(event.target.value);
+    
+  }
+  function handleTitleChange(event){
+    setTitle(event.target.value);
+  }
+
+  function addPassword(){
+    Axios.post("http://localhost:3001/addpassword", {password: password, title: title});
+  }
+  function decryptPassword(encryption){
+    Axios.post('http://localhost:3001/decryptpassword', {
+      password: encryption.password,
+      iv: encryption.iv}).then((response) => {
+        setPasswordList(passwordList.map((val) => {
+          return val.id == encryption.id ? {
+            id: val.id, password:val.password, 
+            title: response.data, 
+            iv: val.iv
+          } : val;
+        }))
+      })
+  }
+  
+  
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="app">
+      <h2>Password Manager</h2>
+      <div className="adding-password">
+        <input type="text" placeholder="Ex. password123" onChange={handlePasswordChange}/>
+        <input type="text" placeholder="Ex. Facebook" onChange={handleTitleChange}/>
+        <button onClick={addPassword}>Add Password</button>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <div className="passwords">
+        {passwordList.map((val) => {
+          return( 
+          <div className="password" onClick={()=>decryptPassword({password: val.password, iv: val.iv, id: val.id})}>
+            <h3>{val.title}</h3>            
+
+          </div>)
+      })}
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </div>
   )
 }
 
