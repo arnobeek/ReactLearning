@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import Message from '../components/Message'
+import Form from './components/Form'
 
 function App() {
-  
+
   return (
-    <Message />
+    <Form />
   )
 }
 
