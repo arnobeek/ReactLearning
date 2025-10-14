@@ -90,6 +90,9 @@ body{
 .footer{
     background-color: yellow;
     height: 100px;
-    border: 1px black solid;
     display: flex;
+    box-shadow: 0.5px 0.5px 4px black;
+}
+.done{
+    text-decoration: line-through;
 }
